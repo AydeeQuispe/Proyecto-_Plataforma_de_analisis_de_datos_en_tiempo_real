@@ -1,6 +1,6 @@
 ## Sprint 1: Extracción de datos en tiempo real utilizando APIs y procesamiento inicial
 
-# Primero se importa las bibliotecas necesarias
+## Primero se importa las bibliotecas necesarias
 import pandas as pd
 import json
 import requests
