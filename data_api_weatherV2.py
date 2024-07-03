@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import json
 import requests
+import re
 import time
 from prometheus_client import Summary, Gauge, generate_latest, CollectorRegistry
 import threading
