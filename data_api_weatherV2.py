@@ -92,10 +92,43 @@ else:
 # Extraer y mostrar métricas de Prometheus
 st.header("Métricas de Prometheus")
 metrics_data = generate_latest(registry).decode('utf-8')
+metricas_explicadas = interpretar_metricas(metrics_data)
 
-# Filtrar las líneas de ayuda y tipo de las métricas
-filtered_metrics_data = '\n'.join(
-    line for line in metrics_data.split('\n') if not line.startswith('#')
-)
 
-st.text(filtered_metrics_data)
+# Función para interpretar y mostrar las métricas
+def interpretar_metricas(metrics_data):
+    metricas_interpretadas = []
+
+    # Expresión regular para extraer el nombre y el valor de las métricas
+    regex = r'^([^\s]+)\s+([^\s]+)\s*$'
+
+    lines = metrics_data.strip().split('\n')
+    for line in lines:
+        if line.startswith('#'):
+            # Ignorar líneas de ayuda y tipo
+            continue
+        match = re.match(regex, line)
+        if match:
+            nombre_metrica = match.group(1)
+            valor_metrica = match.group(2)
+            if nombre_metrica.endswith('_count'):
+                metrica_explicacion = f"El número de eventos observados para {nombre_metrica}: {valor_metrica}"
+            elif nombre_metrica.endswith('_sum'):
+                metrica_explicacion = f"La suma total para {nombre_metrica}: {valor_metrica} segundos"
+            elif nombre_metrica.endswith('_created'):
+                metrica_explicacion = f"Timestamp de creación para {nombre_metrica}: {valor_metrica}"
+            elif nombre_metrica == 'exito_solicitud':
+                if valor_metrica == '1.0':
+                    metrica_explicacion = "La última solicitud fue exitosa."
+                else:
+                    metrica_explicacion = "La última solicitud no fue exitosa."
+            else:
+                metrica_explicacion = f"Valor de {nombre_metrica}: {valor_metrica}"
+
+            metricas_interpretadas.append(metrica_explicacion)
+
+    return metricas_interpretadas
+    
+
+
+st.text(metricas_explicadas)
