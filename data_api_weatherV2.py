@@ -136,4 +136,6 @@ metricas_explicadas = interpretar_metricas(metrics_data)
 texto=""
 for metrica in metricas_explicadas:
     texto += metrica + "\n"
-st.text_area(texto)
+
+# Mostrar el texto en Streamlit con ajuste automático y justificación
+st.text(texto, wrap=True, justification='justified')
