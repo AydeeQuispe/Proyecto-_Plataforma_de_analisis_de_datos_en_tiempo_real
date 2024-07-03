@@ -10,10 +10,11 @@ import threading
 # Crear un registro personalizado
 registry = CollectorRegistry()
 
-# Crear métricas de Prometheus
-REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing request', registry=registry)
-DATAFRAME_UPDATE_TIME = Summary('dataframe_update_seconds', 'Time spent updating dataframe', registry=registry)
-REQUEST_SUCCESS = Gauge('request_success', 'Indicates if the request was successful (1) or not (0)', registry=registry)
+# Crear métricas de Prometheus en español
+REQUEST_TIME = Summary('tiempo_procesamiento_solicitud_segundos', 'Tiempo invertido procesando la solicitud', registry=registry)
+DATAFRAME_UPDATE_TIME = Summary('tiempo_actualizacion_dataframe_segundos', 'Tiempo invertido actualizando el DataFrame', registry=registry)
+REQUEST_SUCCESS = Gauge('exito_solicitud', 'Indica si la solicitud fue exitosa (1) o no (0)', registry=registry)
+
 
 # Iniciar el servidor de Prometheus en un hilo separado
 def start_prometheus_server():
