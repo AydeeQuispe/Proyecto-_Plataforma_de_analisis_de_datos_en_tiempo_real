@@ -91,4 +91,10 @@ else:
 # Extraer y mostrar métricas de Prometheus
 st.header("Métricas de Prometheus")
 metrics_data = generate_latest(registry).decode('utf-8')
-st.text(metrics_data)
+
+# Filtrar las líneas de ayuda y tipo de las métricas
+filtered_metrics_data = '\n'.join(
+    line for line in metrics_data.split('\n') if not line.startswith('#')
+)
+
+st.text(filtered_metrics_data)
