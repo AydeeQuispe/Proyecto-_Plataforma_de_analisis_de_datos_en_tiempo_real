@@ -136,4 +136,4 @@ metricas_explicadas = interpretar_metricas(metrics_data)
 texto=""
 for metrica in metricas_explicadas:
     texto += metrica + "\n"
-st.text(texto)
+st.text_area(texto)
