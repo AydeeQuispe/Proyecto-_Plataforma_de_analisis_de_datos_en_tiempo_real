@@ -133,5 +133,7 @@ def interpretar_metricas(metrics_data):
 
 metricas_explicadas = interpretar_metricas(metrics_data)
 # Mostrar las métricas interpretadas
+texto=""
 for metrica in metricas_explicadas:
-    st.text(metrica)
+    texto += metrica
+st.text(texto)
