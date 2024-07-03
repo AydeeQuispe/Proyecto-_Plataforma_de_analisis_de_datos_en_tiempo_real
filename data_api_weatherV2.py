@@ -92,7 +92,7 @@ else:
 # Extraer y mostrar métricas de Prometheus
 st.header("Métricas de Prometheus")
 metrics_data = generate_latest(registry).decode('utf-8')
-metricas_explicadas = interpretar_metricas(metrics_data)
+
 
 
 # Función para interpretar y mostrar las métricas
@@ -130,5 +130,5 @@ def interpretar_metricas(metrics_data):
     return metricas_interpretadas
     
 
-
+metricas_explicadas = interpretar_metricas(metrics_data)
 st.text(metricas_explicadas)
