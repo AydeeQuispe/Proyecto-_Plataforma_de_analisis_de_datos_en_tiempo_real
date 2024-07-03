@@ -1,1 +1,8 @@
 dask[dataframe]
+dask
+streamlit
+pandas
+requests
+prometheus_client
+matplotlib
+plotly
