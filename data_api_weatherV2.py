@@ -137,5 +137,5 @@ texto=""
 for metrica in metricas_explicadas:
     texto += metrica + "\n"
 
-# Mostrar el texto en Streamlit con ajuste automático y justificación
-st.text(texto, wrap=True, justification='justified')
+
+st.markdown(texto)
