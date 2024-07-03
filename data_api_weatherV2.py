@@ -135,5 +135,5 @@ metricas_explicadas = interpretar_metricas(metrics_data)
 # Mostrar las métricas interpretadas
 texto=""
 for metrica in metricas_explicadas:
-    texto += metrica
+    texto += metrica + "\n"
 st.text(texto)
